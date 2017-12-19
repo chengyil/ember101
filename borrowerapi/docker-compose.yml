@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+  api:
+    build:
+      context: '.'
+    working_dir: /opt/app
+    volumes:
+      - type: bind
+        source: C:/Users/chengyil/code/ember/borrowerapi
+        target: /opt/app
+  rake:
+    image: borrowerapi_api:latest
+    entrypoint: rake 
+    command: '-T'
+    volumes:
+      - type: bind
+        source: C:/Users/chengyil/code/ember/borrowerapi
+        target: /opt/app
+  rails:
+    image: borrowerapi_api:latest
+    entrypoint: rails 
+    command: '-v'
+    volumes:
+      - type: bind
+        source: C:/Users/chengyil/code/ember/borrowerapi
+        target: /opt/app
+  irb:
+    image: borrowerapi_api:latest
+    entrypoint: irb 
+    volumes:
+      - type: bind
+        source: C:/Users/chengyil/code/ember/borrowerapi
+        target: /opt/app
+  gem:
+    image: borrowerapi_api:latest
+    entrypoint: gem 
+    command: '-v'
+    volumes:
+      - type: bind
+        source: C:/Users/chengyil/code/ember/borrowerapi
+        target: /opt/app
